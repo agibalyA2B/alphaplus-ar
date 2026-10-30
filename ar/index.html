@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alpha+ Vessel in AR</title>
+<style>
+:root{--bg:#eef0ee;--ink:#1f2529;--muted:#5d666d;--accent:#00a35d}
+@media (prefers-color-scheme:dark){:root{--bg:#151a1d;--ink:#e7ebe8;--muted:#9aa4a9;--accent:#2fd187;color-scheme:dark}}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);
+ font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:24px max(16px,env(safe-area-inset-right)) 24px max(16px,env(safe-area-inset-left));box-sizing:border-box;text-align:center}
+main{max-width:420px;display:grid;gap:14px}
+h1{margin:0;font-size:1.7rem;line-height:1.1}
+p{margin:0;color:var(--muted)}
+a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;border-radius:8px;padding:14px 20px}
+a.alt{color:var(--ink);font-size:.9rem}
+img.thumb{width:72px;height:auto;margin:0 auto}
+</style>
+</head>
+<body>
+<main>
+  <h1>Alpha+ Vessel</h1>
+  <p id="msg">Opening the AR view for your phone…</p>
+  <a id="go" class="btn" href="../">Open in AR</a>
+  <a class="alt" href="../">Open the 3D viewer instead</a>
+</main>
+<script>
+(function(){
+  var base = location.href.replace(/ar\/?(index\.html)?(\?.*)?(#.*)?$/, '');
+  var usdz = base + 'AlphaPlus_AR.usdz';
+  var glb  = base + 'AlphaPlus_AR.glb';
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  var go = document.getElementById('go'), msg = document.getElementById('msg');
+  if (isIOS) {
+    // AR Quick Look: an <a rel="ar"> with an image child opens straight into AR
+    go.setAttribute('rel', 'ar'); go.href = usdz;
+    var img = document.createElement('img'); img.alt = ''; img.width = 1; img.height = 1; go.appendChild(img);
+    msg.textContent = 'If AR does not open by itself, tap the button.';
+    setTimeout(function(){ location.href = usdz; }, 300);
+  } else if (isAndroid) {
+    var fallback = base;
+    var intent = 'intent://arvr.google.com/scene-viewer/1.2?file=' + encodeURIComponent(glb) +
+      '&mode=ar_preferred&title=' + encodeURIComponent('Alpha+ Vessel') +
+      '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
+      'S.browser_fallback_url=' + encodeURIComponent(fallback) + ';end;';
+    go.href = intent;
+    msg.textContent = 'If AR does not open by itself, tap the button.';
+    setTimeout(function(){ location.href = intent; }, 300);
+  } else {
+    msg.textContent = 'AR needs a phone. Opening the 3D viewer…';
+    go.textContent = 'Open the 3D viewer'; go.href = base;
+    setTimeout(function(){ location.replace(base); }, 800);
+  }
+})();
+</script>
+</body>
+</html>
