@@ -26,7 +26,7 @@ Keep valid JSON punctuation and double quotes. Create `pitch/assets/` and upload
 - For every animated number update **both** `data-number="…"` and the visible text inside its span. Decimal precision uses `data-decimals="2"`. Update the adjacent source and unit too.
 - Search for `[Member 1` through `[Member 5` and replace the five marked placeholders.
 - Search for `FULL MODEL` in the financial details and closing. Replace the pending spans with a real `<a href="YOUR_PUBLISHED_MODEL_URL">Full model ↗</a>` only when you have that URL. Update the sources dialog too.
-- Model v4 is in `pitch/assets/Path_A_model_v4.xlsx` and linked from the economics section, its details panel, the Sources dialog and the closing. The repo is public, so anyone with the link can download it.
+- Model v5 is in `pitch/assets/Alpha_Plus_model_v5.xlsx` and linked from the economics section, its details panel, the Sources dialog and the closing. The repo is public, so anyone with the link can download it.
 - The comparison is qualitative draft material, not tested product performance. Verify exact comparator models, prices, lids and scheme details before removing caveats. Do not claim a paper-cup cost or carbon advantage.
 - 802M is rounded **passenger ridership across public transport, shared mobility and taxis**, not vehicle trips, Metro-only use or unique people.
 - Environmental claim: CHOICE/CIRAIG give about 40 to 50 uses for a stainless cup to break even on climate impact; Team 4 converts uses to a return rate with uses = 1 ÷ (1 − r), so about 97.5% returns. The page states the conversion as a Team 4 modelling assumption; the pilot measures actual impact.
@@ -107,3 +107,12 @@ Build checks: four service steps, five comparison rows, four rollout stages, fiv
 - Morning board widened to 26 cells for "METRO H1 2026 136,500,000".
 
 - "What must be true": the 221 / day hurdle is set against BurJuman traffic (about 0.50f 46,400 daily rides) and the UK station benchmark (about 2.50f visits buy coffee; Network Rail, Q1 2015-16, Team 4 calculation).
+
+## Changes, 9 Nov 2026 (v4, team meetup decisions)
+
+- Model v5 (`assets/Alpha_Plus_model_v5.xlsx`): base return rate 90%, the team's pilot target. NPV AED +2.60M; break-even about month 17. One change at a time: menu AED 16 +2.11M; ingredients 35% +1.12M; no lost-vessel deposits kept +1.08M.
+- Journey steps named as need → answer pairs: HOLD → SEAL, TAP → DOCK, SAVOUR → PAUSE, GO LIGHT → RETURN.
+- Environmental card: 40–50 uses for a steel cup to beat a paper cup on CO₂; claim less waste now and a CO₂ reduction as returns climb, measured in the pilot. Closing chip: return target 90%.
+- Persona quote from Jane; comparison intro from Ömer ("Designed around the commute, not around the cup."); about 20 seconds per no-milk espresso drink at the kiosk; parts-cost line.
+- Top bar: 80% ink background with the logo, title and progress bar only. Tweaks open with `?tweaks` in the address.
+- Film: if it had to start muted, sound turns on at the first click, tap or key press.
